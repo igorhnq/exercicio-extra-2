@@ -31,9 +31,36 @@ public class TesteArvore {
         System.out.println("=====================================");
         arvore.imprimirPorNivel();
         
+        System.out.println("\nTestando se a árvore está desbalanceada:");
+        System.out.println("=========================================");
+        System.out.println("Árvore está desbalanceada? " + arvore.estaDesbalanceada());
+        
+        System.out.println("\nCriando uma árvore desbalanceada para teste:");
+        System.out.println("=============================================");
+        ArvoreBinaria<Integer> arvoreDesbalanceada = new ArvoreBinaria<>();
+        
+        NoBinario<Integer> raizDesb = new NoBinario<>(50, null);
+        NoBinario<Integer> no30Desb = new NoBinario<>(30, raizDesb);
+        NoBinario<Integer> no20Desb = new NoBinario<>(20, no30Desb);
+        NoBinario<Integer> no10Desb = new NoBinario<>(10, no20Desb);
+        
+        raizDesb.esquerdo = no30Desb;
+        no30Desb.esquerdo = no20Desb;
+        no20Desb.esquerdo = no10Desb;
+        
+        arvoreDesbalanceada.setRaiz(raizDesb);
+        for (int i = 1; i < 4; i++) {
+            arvoreDesbalanceada.incrementarTamanho();
+        }
+        
+        System.out.println("Árvore desbalanceada:");
+        arvoreDesbalanceada.imprimirPorNivel();
+        System.out.println("Árvore está desbalanceada? " + arvoreDesbalanceada.estaDesbalanceada());
+        
         System.out.println("\nTestando com árvore vazia:");
         System.out.println("===========================");
         ArvoreBinaria<Integer> arvoreVazia = new ArvoreBinaria<>();
         arvoreVazia.imprimirPorNivel();
+        System.out.println("Árvore vazia está desbalanceada? " + arvoreVazia.estaDesbalanceada());
     }
 } 

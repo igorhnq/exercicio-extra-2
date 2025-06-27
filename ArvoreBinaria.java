@@ -69,4 +69,18 @@ public class ArvoreBinaria<E extends Comparable<E>> implements Arvore<E> {
             nivel++;
         }
     }
+    
+    public boolean estaDesbalanceada() {
+        return verificaDesbalanceamento(raiz) != -1;
+    }
+
+    private int verificaDesbalanceamento(NoBinario<E> no) {
+        if (no == null) return 0;
+        int alturaEsq = verificaDesbalanceamento(no.esquerdo);
+        if (alturaEsq == -1) return -1;
+        int alturaDir = verificaDesbalanceamento(no.direito);
+        if (alturaDir == -1) return -1;
+        if (Math.abs(alturaEsq - alturaDir) > 1) return -1;
+        return Math.max(alturaEsq, alturaDir) + 1;
+    }
 }
