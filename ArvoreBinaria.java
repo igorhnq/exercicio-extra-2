@@ -83,4 +83,18 @@ public class ArvoreBinaria<E extends Comparable<E>> implements Arvore<E> {
         if (Math.abs(alturaEsq - alturaDir) > 1) return -1;
         return Math.max(alturaEsq, alturaDir) + 1;
     }
+
+    public void percursoEmOrdem() {
+        System.out.println("Percurso em ordem:");
+        percursoEmOrdemRecursivo(raiz);
+        System.out.println();
+    }
+    
+    private void percursoEmOrdemRecursivo(NoBinario<E> no) {
+        if (no != null) {
+            percursoEmOrdemRecursivo(no.esquerdo);
+            System.out.print(no.getElemento() + " ");
+            percursoEmOrdemRecursivo(no.direito);
+        }
+    }
 }
