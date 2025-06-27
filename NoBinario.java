@@ -16,4 +16,8 @@ public class NoBinario<E> implements Posicao<E> {
     public E getElemento() {
         return elemento;
     }
+    
+    public NoBinario<E> getPai() {
+        return pai;
+    }
 }
